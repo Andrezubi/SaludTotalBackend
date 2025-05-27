@@ -94,3 +94,50 @@ export class Medico {
 
 
 }
+
+
+
+
+@Entity()
+export class Admin {
+    @PrimaryGeneratedColumn("uuid")
+    id: string
+
+    @Column()
+    ci:number
+
+    @Column()
+    nombre: string
+
+    @Column()
+    apellido: string
+
+    @Column()
+    rol:string
+
+    @Column()
+    fechaNac: Date
+    
+    @Column()
+    estadoCivil: string
+
+    @Column()
+    direccion: string
+
+    @Column()
+    correoElectronico: string
+
+    @Column()
+    tipoSangre: string
+
+    @Column()
+    telefono: number
+
+    @Column()
+    lugarNac: string
+
+    @Column()
+    genero : string
+
+
+}

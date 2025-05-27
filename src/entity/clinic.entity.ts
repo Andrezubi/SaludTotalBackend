@@ -11,6 +11,9 @@ export class Clinica{
     @Column()
     nombre: string
 
+    @Column()
+    ubicacion: string
+
     @OneToMany(() => Medico, (medico) => medico.clinica) // note: we will create author property in the Photo class below
     medicos: Medico[]
 }
