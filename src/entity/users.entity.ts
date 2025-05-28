@@ -1,6 +1,7 @@
-import { Column,Entity,ForeignKey,PrimaryColumn,PrimaryGeneratedColumn,ManyToOne } from "typeorm";
+import { Column,Entity,ForeignKey,PrimaryColumn,PrimaryGeneratedColumn,ManyToOne, OneToMany } from "typeorm";
 import { UUID } from "typeorm/driver/mongodb/bson.typings";
 import { Clinica } from "./clinic.entity";
+import { HistorialMedico } from "./history.entity";
 
 
 @Entity()
@@ -44,6 +45,9 @@ export class Paciente{
 
     @Column()
     genero : string
+
+    @OneToMany(() => HistorialMedico, (historial) => historial.pacientes)
+    historial: HistorialMedico;
 
 }
 
@@ -92,6 +96,8 @@ export class Medico {
     @Column()
     genero : string
 
+    @ManyToOne(() => HistorialMedico, (historial) => historial.medicos)
+    historial: HistorialMedico;
 
 }
 
