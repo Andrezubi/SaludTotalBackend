@@ -1,8 +1,8 @@
 import "reflec-metadata"
 import { DataSource , DataSourceOptions } from "typeorm"
 import { Clinica } from "../entity/clinic.entity"
-import { Especiality } from "../entity/Especiality"
-import { HistoryData } from "../entity/HistoryData"
+import { Especialidad } from "src/entity/specialty.entity"
+import { ReporteMedico } from "src/entity/report.entity"
 import { Medico } from "../entity/users.entity"
 import { Paciente } from "../entity/users.entity"
 
@@ -15,7 +15,7 @@ export const AppDataSource =  new DataSource({
     database: "Salud Total Bolivia",
     synchronize: true,
     logging: true,
-    entities: [Clinica, Especiality, HistoryData, Medico, Paciente],
+    entities: [Clinica, Especialidad, ReporteMedico, Medico, Paciente],
     subscribers: [],
     migrations: [],
 })

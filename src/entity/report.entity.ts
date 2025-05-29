@@ -4,12 +4,15 @@ import { Paciente } from "./users.entity";
 import { Medico } from "./users.entity";
 
 @Entity()   
-export class HistorialMedico{
+export class ReporteMedico{
     @PrimaryGeneratedColumn("uuid")
     id: string
 
-    @OneToMany(() => Medico, (medico) => medico.historial) // note: we will create author property in the Photo class below
+    @OneToMany(() => Medico, (medico) => medico.reporte) // note: we will create author property in the Photo class below
     medicos: Medico[]
+    
+    @ManyToOne(() => Paciente, (paciente) => paciente.reporte) // note: we will create author property in the Photo class below
+    pacientes: Paciente[]
 
     @Column()
     fechaRegistro: Date
@@ -17,8 +20,12 @@ export class HistorialMedico{
     @Column({ type: 'time' })
     horaRegistro: string;
 
-    @ManyToOne(() => Paciente, (paciente) => paciente.historial) // note: we will create author property in the Photo class below
-    pacientes: Paciente[]
-    
+    @Column()
+    diagnostico: string
 
+    @Column()
+    tratamiento: string
+
+    @Column()
+    notas: string
 }
