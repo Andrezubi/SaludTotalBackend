@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const data_source_1 = require("./data-source");
+const data_source_1 = require("./config/data-source");
 const User_1 = require("./entity/User");
 data_source_1.AppDataSource.initialize().then(async () => {
     console.log("Inserting a new user into the database...");

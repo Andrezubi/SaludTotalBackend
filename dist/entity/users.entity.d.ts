@@ -1,4 +1,5 @@
 import { Clinica } from "./clinic.entity";
+import { ReporteMedico } from "./report.entity";
 export declare class Paciente {
     id: string;
     ci: number;
@@ -13,6 +14,8 @@ export declare class Paciente {
     telefono: number;
     lugarNac: string;
     genero: string;
+    reporte: ReporteMedico;
+    clinica: Clinica;
 }
 export declare class Medico {
     id: string;
@@ -29,6 +32,7 @@ export declare class Medico {
     telefono: number;
     lugarNac: string;
     genero: string;
+    reporte: ReporteMedico;
 }
 export declare class Admin {
     id: string;

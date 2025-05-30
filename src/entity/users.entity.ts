@@ -2,7 +2,7 @@ import { Column,Entity,ForeignKey,PrimaryColumn,PrimaryGeneratedColumn,ManyToOne
 import { UUID } from "typeorm/driver/mongodb/bson.typings";
 import { Clinica } from "./clinic.entity";
 import { ReporteMedico } from "./report.entity";
-
+import { Reserva } from "./reserve.entity";
 
 @Entity()
 export class Paciente{
@@ -51,6 +51,9 @@ export class Paciente{
 
     @ManyToOne(() => Clinica, (clinica) => clinica.pacientes)
     clinica: Clinica
+
+    @OneToMany(() => Reserva, (reserva) => reserva.pacientes) // note: we will create author property in the Photo class below
+    reservas: Reserva[]
 }
 
 @Entity()
@@ -100,6 +103,9 @@ export class Medico {
 
     @ManyToOne(() => ReporteMedico, (reporte) => reporte.medicos)
     reporte: ReporteMedico;
+
+    @OneToMany(() => Reserva, (reserva) => reserva.medicos) // note: we will create author property in the Photo class below
+    reservas: Reserva[]
 
 }
 

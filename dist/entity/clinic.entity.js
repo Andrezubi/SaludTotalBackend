@@ -12,11 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Clinica = void 0;
 const typeorm_1 = require("typeorm");
 const users_entity_1 = require("./users.entity");
+const users_entity_2 = require("./users.entity");
 let Clinica = class Clinica {
     id;
     nombre;
-    ubicacion;
     medicos;
+    pacientes;
+    ubicacion;
+    telefono;
 };
 exports.Clinica = Clinica;
 __decorate([
@@ -28,13 +31,21 @@ __decorate([
     __metadata("design:type", String)
 ], Clinica.prototype, "nombre", void 0);
 __decorate([
+    (0, typeorm_1.OneToMany)(() => users_entity_1.Medico, (medico) => medico.clinica),
+    __metadata("design:type", Array)
+], Clinica.prototype, "medicos", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => users_entity_2.Paciente, (paciente) => paciente.clinica),
+    __metadata("design:type", Array)
+], Clinica.prototype, "pacientes", void 0);
+__decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Clinica.prototype, "ubicacion", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => users_entity_1.Medico, (medico) => medico.clinica),
-    __metadata("design:type", Array)
-], Clinica.prototype, "medicos", void 0);
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], Clinica.prototype, "telefono", void 0);
 exports.Clinica = Clinica = __decorate([
     (0, typeorm_1.Entity)()
 ], Clinica);

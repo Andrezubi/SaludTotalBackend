@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Admin = exports.Medico = exports.Paciente = void 0;
 const typeorm_1 = require("typeorm");
 const clinic_entity_1 = require("./clinic.entity");
+const report_entity_1 = require("./report.entity");
 let Paciente = class Paciente {
     id;
     ci;
@@ -26,6 +27,8 @@ let Paciente = class Paciente {
     telefono;
     lugarNac;
     genero;
+    reporte;
+    clinica;
 };
 exports.Paciente = Paciente;
 __decorate([
@@ -80,6 +83,14 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Paciente.prototype, "genero", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => report_entity_1.ReporteMedico, (reporte) => reporte.pacientes),
+    __metadata("design:type", report_entity_1.ReporteMedico)
+], Paciente.prototype, "reporte", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => clinic_entity_1.Clinica, (clinica) => clinica.pacientes),
+    __metadata("design:type", clinic_entity_1.Clinica)
+], Paciente.prototype, "clinica", void 0);
 exports.Paciente = Paciente = __decorate([
     (0, typeorm_1.Entity)()
 ], Paciente);
@@ -98,6 +109,7 @@ let Medico = class Medico {
     telefono;
     lugarNac;
     genero;
+    reporte;
 };
 exports.Medico = Medico;
 __decorate([
@@ -156,6 +168,10 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Medico.prototype, "genero", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => report_entity_1.ReporteMedico, (reporte) => reporte.medicos),
+    __metadata("design:type", report_entity_1.ReporteMedico)
+], Medico.prototype, "reporte", void 0);
 exports.Medico = Medico = __decorate([
     (0, typeorm_1.Entity)()
 ], Medico);
