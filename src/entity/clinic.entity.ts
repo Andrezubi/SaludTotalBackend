@@ -3,6 +3,8 @@ import { UUID } from "typeorm/driver/mongodb/bson.typings";
 import { Medico } from "./users.entity";
 import { Paciente } from "./users.entity";
 import { Reserva } from "./reserve.entity";
+import { TurnoMedico} from "./shift.entity";
+
 
 
 @Entity()
@@ -21,6 +23,9 @@ export class Clinica{
 
     @OneToMany(() => Reserva, (reserva) => reserva.clinica) // note: we will create author property in the Photo class below
     reservas: Reserva[]
+
+    @OneToMany(() => TurnoMedico, (turno) => turno.clinica) // note: we will create author property in the Photo class below
+    turnos: TurnoMedico[]
 
     @Column()
     ubicacion: string
